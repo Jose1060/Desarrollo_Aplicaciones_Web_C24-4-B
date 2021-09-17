@@ -1,8 +1,3 @@
-<%-- 
-    Document   : areas
-    Created on : 10/09/2021, 02:04:29 PM
-    Author     : josea
---%>
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -12,7 +7,7 @@
 <%
 HttpSession misession= (HttpSession) request.getSession();
 String usuario= (String) misession.getAttribute("usuario");  
-String estado= (String) misession.getAttribute("estado"); 
+String estado= (String) misession.getAttribute("estado");  
 if(misession == null || misession.getAttribute("usuario") == null){
       out.print("<link rel=\"stylesheet\" \n"
                 + "              href=\"webjars/bootstrap/5.1.0/css/bootstrap.min.css\" type=\"text/css\" />");
@@ -33,10 +28,10 @@ if(misession == null || misession.getAttribute("usuario") == null){
     Class.forName(driver);
     Connection xcon = DriverManager.getConnection(url, user, pass);
 
-    String sql = "select * from areas";
+    String sql = "select * from cargos";
     Statement stm = xcon.createStatement();
     ResultSet rs = stm.executeQuery(sql);
-
+   
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,12 +48,12 @@ if(misession == null || misession.getAttribute("usuario") == null){
 
         <div class="container">
             <h3>Usuario Logeado: <b><% out.print(usuario); %></b></h3>
-            <h4>Usuario Logeado: <b><% out.print(estado); %></b></h4>
+            <h4>Usuario Estado: <b><% out.print(estado); %></b></h4>
             <h3><a class='btn btn-primary' href="index.html">Inicio</a></h3>
-            <h3><a class='btn btn-danger' href="/WebJava04/ServletSesion">Cerrar Sesion</a></h3>
-            <h1>Listado de Areas</h1>
+            <h3><a class='btn btn-danger' href="/WebJava04/ServletSesion">Cerrar Sesion</a></h3>           
+            <h1>Listado de Cargos</h1>
             <h4>Opciones</h4>
-            <form action="areas.jsp" method="post" class="">
+            <form action="cargos.jsp" method="post" class="">
                 <div class="form-group">
                     <select name="opcion" class="form-control">
                         <option value="par">Par</option>
@@ -73,11 +68,12 @@ if(misession == null || misession.getAttribute("usuario") == null){
                     <tr>
                         <th scope="col">CODIGO</th>
                         <th scope="col">NOMBRE</th>
+                        <th scope="col">CARGO</th>
                         <th scope="col">ESTADO</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <%
+                    <%  
                         String op = " ";
                         if (request.getParameter("opcion") != null){
                             op = request.getParameter("opcion");
@@ -92,6 +88,7 @@ if(misession == null || misession.getAttribute("usuario") == null){
                                     out.print("<td>" + rs.getString(1) + "</td>");
                                     out.print("<td>" + rs.getString(2) + "</td>");
                                     out.print("<td>" + rs.getString(3) + "</td>");
+                                    out.print("<td>" + rs.getString(4) + "</td>");
                                     out.print("</tr>");
                             }
                         }
@@ -105,6 +102,7 @@ if(misession == null || misession.getAttribute("usuario") == null){
                                     out.print("<td>" + rs.getString(1) + "</td>");
                                     out.print("<td>" + rs.getString(2) + "</td>");
                                     out.print("<td>" + rs.getString(3) + "</td>");
+                                    out.print("<td>" + rs.getString(4) + "</td>");
                                     out.print("</tr>");
                             }
                         }
@@ -114,6 +112,7 @@ if(misession == null || misession.getAttribute("usuario") == null){
                                 out.print("<td>" + rs.getString(1) + "</td>");
                                 out.print("<td>" + rs.getString(2) + "</td>");
                                 out.print("<td>" + rs.getString(3) + "</td>");
+                                out.print("<td>" + rs.getString(4) + "</td>");
                                 out.print("</tr>");
                         }
                         }

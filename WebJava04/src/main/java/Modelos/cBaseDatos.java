@@ -45,4 +45,20 @@ public class cBaseDatos {
         }
         return false;
     }
+    public String Estado(String xnom) {
+        try {
+            Connection xcon = this.Conectar();
+            String sql = "select ESTADO from t_usuarios where nombre=?";
+            PreparedStatement ps=xcon.prepareStatement(sql);
+            ps.setString(1, xnom);
+            ResultSet rs = ps.executeQuery();
+ 	     rs.next();
+            String estado = rs.getString(1);
+            xcon.close();
+            return estado;        
+        } catch (NumberFormatException | SQLException ex ) {
+            System.out.println(ex.toString());
+        }
+        return null;
+    }
 }

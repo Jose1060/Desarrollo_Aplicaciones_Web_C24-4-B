@@ -40,8 +40,18 @@ public class ServletVerifica extends HttpServlet {
             cBaseDatos objDB = new cBaseDatos();
             if (objDB.validarUsuario(xnom, xcla)){
                 HttpSession misession= request.getSession(true);
-                misession.setAttribute("usuario",xnom.toUpperCase());
-                response.sendRedirect("/WebJava04/areas.jsp");
+                misession.setAttribute("usuario",xnom);
+                System.out.println(xnom);
+                String xest = objDB.Estado(xnom);
+                System.out.println(xest);
+                if (xest.equals("A"))
+                    misession.setAttribute("estado","Activo");
+                else if(xest.equals("N"))
+                    misession.setAttribute("estado","No activo");
+                else
+                    misession.setAttribute("estado","Error");
+                
+                response.sendRedirect("/WebJava04/index.html");
                 
             }else
                 response.sendRedirect("/WebJava04/index.html");

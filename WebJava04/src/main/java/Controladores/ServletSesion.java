@@ -7,6 +7,7 @@ package Controladores;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,12 +34,24 @@ public class ServletSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-                 try {
+        PrintWriter out = response.getWriter();
+        out.print("<link rel=\"stylesheet\" \n"
+                + "              href=\"webjars/bootstrap/5.1.0/css/bootstrap.min.css\" type=\"text/css\" />");
+        try {
+            out.print("<div class='container'>");
+            out.print("<div class=\"card\" style=\"width: 18rem;\">\n"
+                    + "  <div class=\"card-body\">\n"
+                    + "    <h5 class=\"card-title\">Sesion Cerrada con Exito</h5><br>\n"
+                    + "    <a href=\"index.html\" class=\"btn btn-primary\">Volver a Incio</a><br>\n"
+                    + "    <a href=\"login.jsp\" class=\"btn btn-primary\">Volver al Login</a><br>\n"
+                    + "  </div>\n"
+                    + "</div>");
+            out.print("</div>");
             HttpSession misession= (HttpSession) request.getSession();
             misession.removeAttribute("usuario");
+            misession.removeAttribute("estado");
             misession.invalidate();
-            response.sendRedirect("/WebJava04/index.html");
-        }finally{}
+        } finally {}
 
     }
 
