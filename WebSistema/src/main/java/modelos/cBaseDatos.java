@@ -123,7 +123,7 @@ public class cBaseDatos {
    ps.executeUpdate();
    xcon.close();
 }
-    public void eliminarAreas( String[] datos ) throws SQLException {
+   public void eliminarAreas( String[] datos ) throws SQLException {
    boolean inicio;
    if ( datos.length <= 0 )
       return;
@@ -143,14 +143,29 @@ public class cBaseDatos {
       ps.setString(xc+1, datos[xc]);
    ps.executeUpdate();
    xcon.close();
+    }
+   
+   public String validarUsuario(String xnom, String xcla) {
+        try {
+            try (Connection xcon = this.Conectar()) {
+                String sql = "select count(*) from t_usuarios where nombre=? AND clave=?";
+                PreparedStatement ps=xcon.prepareStatement(sql);
+                ps.setString(1, xnom );
+                ps.setString(2, xcla );
+                ResultSet rs = ps.executeQuery();
+                rs.next();
+                String cantidad = rs.getString(1);
+                int xcant = Integer.parseInt( cantidad );
+                if ( xcant > 0 ){
+                    return xnom;
+                }
+            }
+        } catch (NumberFormatException | SQLException ex ) {
+            System.out.println(ex.toString());
+        }
+        return null;
+    }
 }
 
 
-
-
-
-
-
-
-}
 
