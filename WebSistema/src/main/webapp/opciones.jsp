@@ -40,10 +40,27 @@ if(misession == null || misession.getAttribute("usuario") == null){
                 <a href="/WebSistema/controladorPrincipal?accion=listadoCursos" class="list-group-item list-group-item-action list-group-item-secondary" 
                    target="derecha">Registro Cursos</a>
             </div>
+            <div class="alert alert-primary" role="alert">
+                <h4>Operaciones</h4>
+                <a href="/WebSistema/controladorPrincipal?accion=matriculaMostrarAlumnos&modo=Lista" class="list-group-item list-group-item-action list-group-item-secondary" 
+                   target="derecha">Crear matricula</a>
+                
+                <a href="/WebSistema/controladorPrincipal?accion=matriculaMostrarMatriculas&modo=Lista" class="list-group-item list-group-item-action list-group-item-secondary" 
+                   target="derecha">Buscar matricula</a>
+            </div>
+            <div class="alert alert-success" role="alert">
+                <h4>Reportes</h4>
+                <a href="/WebSistema/reportes/listadoAlumnos.jsp" class="list-group-item list-group-item-action list-group-item-secondary" 
+                   target="derecha">Listar Alumnos</a>     
+                <a href="/WebSistema/reportes/formularioListarAlumnosPorSexo.jsp" class="list-group-item list-group-item-action list-group-item-secondary" 
+                   target="derecha">Listar Alumnos por Sexo</a>  
+            </div>
+            
             <div class="alert alert-danger" role="alert">
                 <a href="/WebSistema/controladorPrincipal?accion=CERRAR_SESION" class="list-group-item list-group-item-action list-group-item-secondary" 
                    target="derecha">Cerrar Sesion</a>               
             </div>
+            
         </div>
     </center>
 </body>
