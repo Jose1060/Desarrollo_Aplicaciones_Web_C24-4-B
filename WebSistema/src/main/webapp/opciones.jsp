@@ -53,7 +53,11 @@ if(misession == null || misession.getAttribute("usuario") == null){
                 <a href="/WebSistema/reportes/listadoAlumnos.jsp" class="list-group-item list-group-item-action list-group-item-secondary" 
                    target="derecha">Listar Alumnos</a>     
                 <a href="/WebSistema/reportes/formularioListarAlumnosPorSexo.jsp" class="list-group-item list-group-item-action list-group-item-secondary" 
-                   target="derecha">Listar Alumnos por Sexo</a>  
+                   target="derecha">Listar Alumnos por Sexo</a> 
+                <a href="/WebSistema/reportes/listadoCursos.jsp" class="list-group-item list-group-item-action list-group-item-secondary" 
+                   target="derecha">Listar Cursos</a>
+                <a href="/WebSistema/reportes/formularioListarMatriculaPorNro_doc.jsp" class="list-group-item list-group-item-action list-group-item-secondary" 
+                   target="derecha">Listar Cursos por N° de documento</a>
             </div>
             
             <div class="alert alert-danger" role="alert">
